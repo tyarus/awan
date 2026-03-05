@@ -8,7 +8,12 @@
     apt:
       update_cache: yes
 
-  - name: Install Nginx
+  - name: Install PHP
     apt:
-      name: nginx
+      name: php
+      state: latest
+
+  - name: Install Git
+    apt:
+      name: git
       state: latest
