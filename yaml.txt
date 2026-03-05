@@ -1,0 +1,24 @@
+---
+- hosts all
+  become true
+
+  tasks
+
+  - name Update apt
+    apt
+      update_cache yes
+
+  - name Install Nginx
+    apt
+      name nginx
+      state latest
+
+  - name Install PHP
+    apt
+      name php
+      state latest
+
+  - name Install Git
+    apt
+      name git
+      state latest
