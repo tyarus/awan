@@ -1,24 +1,14 @@
----
-- hosts all
-  become true
+Vagrant.configure("2") do |config|
 
-  tasks
+  config.vm.box = "ubuntu/focal64"
 
-  - name Update apt
-    apt
-      update_cache yes
+  config.vm.provider "virtualbox" do |vb|
+    vb.memory = "2048"
+    vb.cpus = 2
+  end
 
-  - name Install Nginx
-    apt
-      name nginx
-      state latest
+  config.vm.provision "ansible" do |ansible|
+    ansible.playbook = "playbook.yaml"
+  end
 
-  - name Install PHP
-    apt
-      name php
-      state latest
-
-  - name Install Git
-    apt
-      name git
-      state latest
+end
